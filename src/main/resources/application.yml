@@ -1,0 +1,18 @@
+#数据源连接信息
+spring:
+  datasource:
+    druid:
+      username: root
+      password: root
+      url: jdbc:mysql://127.0.0.1:3306/wangruohan
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+  port: 80
