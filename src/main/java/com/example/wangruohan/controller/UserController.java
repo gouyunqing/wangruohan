@@ -1,50 +1,48 @@
 package com.example.wangruohan.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import com.example.wangruohan.controller.utils.R;
 import com.example.wangruohan.domain.Artist;
+import com.example.wangruohan.domain.User;
 import com.example.wangruohan.service.IArtistService;
-import org.apache.ibatis.annotations.Delete;
+import com.example.wangruohan.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/artists")
-public class ArtistController {
+@RequestMapping("/users")
+public class UserController {
 
     @Autowired
-    private IArtistService artistService;
+    private IUserService userService;
 
     @GetMapping
     public R getAll(){
-        return new R(true, artistService.list());
+        return new R(true, userService.list());
     }
 
     @PostMapping
-    public R save(@RequestBody Artist artist){
-        return new R(artistService.save(artist));
+    public R save(@RequestBody User user){
+        return new R(userService.save(user));
     }
 
     @PutMapping
-    public R update(@RequestBody Artist artist){
-        return new R(artistService.updateById(artist));
+    public R update(@RequestBody User user){
+        return new R(userService.updateById(user));
     }
 
     @DeleteMapping("/{id}")
     public R delete(@PathVariable Integer id){
-        return new R(artistService.removeById(id));
+        return new R(userService.removeById(id));
     }
 
     @GetMapping("/{id}")
     public R getById(@PathVariable Integer id){
-        return new R(true, artistService.getById(id));
+        return new R(true, userService.getById(id));
     }
 
     @GetMapping("/{currentPage}/{pageSize}")
     public R getPage(@PathVariable int currentPage, @PathVariable int pageSize){
-        return new R(true, artistService.getPage(currentPage, pageSize));
+        return new R(true, userService.getPage(currentPage, pageSize));
     }
 }

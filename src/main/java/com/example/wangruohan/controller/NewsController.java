@@ -1,50 +1,48 @@
 package com.example.wangruohan.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import com.example.wangruohan.controller.utils.R;
 import com.example.wangruohan.domain.Artist;
+import com.example.wangruohan.domain.News;
 import com.example.wangruohan.service.IArtistService;
-import org.apache.ibatis.annotations.Delete;
+import com.example.wangruohan.service.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/artists")
-public class ArtistController {
+@RequestMapping("/Newses")
+public class NewsController {
 
     @Autowired
-    private IArtistService artistService;
+    private INewsService newsService;
 
     @GetMapping
     public R getAll(){
-        return new R(true, artistService.list());
+        return new R(true, newsService.list());
     }
 
     @PostMapping
-    public R save(@RequestBody Artist artist){
-        return new R(artistService.save(artist));
+    public R save(@RequestBody News news){
+        return new R(newsService.save(news));
     }
 
     @PutMapping
-    public R update(@RequestBody Artist artist){
-        return new R(artistService.updateById(artist));
+    public R update(@RequestBody News news){
+        return new R(newsService.updateById(news));
     }
 
     @DeleteMapping("/{id}")
     public R delete(@PathVariable Integer id){
-        return new R(artistService.removeById(id));
+        return new R(newsService.removeById(id));
     }
 
     @GetMapping("/{id}")
     public R getById(@PathVariable Integer id){
-        return new R(true, artistService.getById(id));
+        return new R(true, newsService.getById(id));
     }
 
     @GetMapping("/{currentPage}/{pageSize}")
     public R getPage(@PathVariable int currentPage, @PathVariable int pageSize){
-        return new R(true, artistService.getPage(currentPage, pageSize));
+        return new R(true, newsService.getPage(currentPage, pageSize));
     }
 }
