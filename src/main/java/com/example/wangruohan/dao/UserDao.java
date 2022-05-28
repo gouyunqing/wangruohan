@@ -9,4 +9,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserDao extends BaseMapper<User> {
 
+    @Select("select * from user where username=#{username} and password=#{password}")
+    User selectByUsernameAndPassword(String username, String password);
+
 }

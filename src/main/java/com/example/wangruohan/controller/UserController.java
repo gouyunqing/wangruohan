@@ -45,4 +45,10 @@ public class UserController {
     public R getPage(@PathVariable int currentPage, @PathVariable int pageSize){
         return new R(true, userService.getPage(currentPage, pageSize));
     }
+
+    @PostMapping("/login")
+    public R login(@RequestParam String username, @RequestParam String password){
+        return new R(true, userService.login(username, password));
+    }
+
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/artists")
 public class ArtistController {
 
@@ -44,6 +45,7 @@ public class ArtistController {
     }
 
     @GetMapping("/{currentPage}/{pageSize}")
+    @ResponseBody
     public R getPage(@PathVariable int currentPage, @PathVariable int pageSize){
         return new R(true, artistService.getPage(currentPage, pageSize));
     }

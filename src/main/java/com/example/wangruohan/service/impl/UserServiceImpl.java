@@ -24,4 +24,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements IUser
         userDao.selectPage(page, null);
         return page;
     }
+
+    @Override
+    public Boolean login(String username, String password) {
+        return userDao.selectByUsernameAndPassword(username, password) != null;
+    }
 }

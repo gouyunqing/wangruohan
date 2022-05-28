@@ -7,4 +7,5 @@ import com.example.wangruohan.domain.User;
 
 public interface IUserService extends IService<User> {
     IPage<User> getPage(int currentPage, int pageSize);
+    Boolean login(String username, String password);
 }
